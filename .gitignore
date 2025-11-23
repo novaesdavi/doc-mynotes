@@ -1,0 +1,79 @@
+# .gitignore for C# / .NET Core projects
+# Generated to ignore common build, user-specific and tooling files
+
+# Build directories
+[Bb]in/
+[Oo]bj/
+
+# SDK-style project build results
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# NuGet
+*.nupkg
+packages/
+.nuget/
+
+# Visual Studio
+.vs/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+*.sln.iml
+
+# Test results
+TestResults/
+*.trx
+
+# Publish output
+publish/
+
+# Roslyn cache
+*.ide.cache
+
+# Temporary files
+*.tmp
+*.log
+
+# Mono
+*.pidb
+
+# Linux/Mac file system
+*.DS_Store
+
+# Visual Studio Code workspace history
+.history/
+
+# Database files
+*.db
+*.sqlite
+
+# OS generated files
+Thumbs.db
+
+# Ignore sensitive/app settings that may contain secrets. Keep if you want them in repo.
+# appsettings.Development.json
+
+# Coverage
+coverage/
+
+# Rider caches
+.idea/
+*.sln.DotSettings.user
+
+# JetBrains Rider scratch files
+*.sublime-workspace
+
+# Node modules (if the repo contains frontend code)
+node_modules/
+
+# Docker
+docker-compose.override.yml
+
+# End of .gitignore
