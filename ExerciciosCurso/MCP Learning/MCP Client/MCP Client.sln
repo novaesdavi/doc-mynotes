@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickstartClient", "QuickstartClient\QuickstartClient.csproj", "{6A649BDE-A5F1-D801-DABB-62BF6E21A35E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6A649BDE-A5F1-D801-DABB-62BF6E21A35E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A649BDE-A5F1-D801-DABB-62BF6E21A35E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A649BDE-A5F1-D801-DABB-62BF6E21A35E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A649BDE-A5F1-D801-DABB-62BF6E21A35E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6021B332-BD7E-430A-A2E2-FF1D6C67E3A3}
+	EndGlobalSection
+EndGlobal
