@@ -35,13 +35,18 @@ builder.Services.AddSingleton(sp =>
 
 var app = builder.Build();
 
+// Initialize the logger in WeatherTools so it can be used by MCP tool wrappers
+var weatherLoggerFactory = app.Services.GetRequiredService<ILoggerFactory>();
+var weatherLogger = weatherLoggerFactory.CreateLogger("WeatherTools");
+QuickstartWeatherServer.Tools.WeatherTools.InitializeLog(weatherLogger);
+
 // If requested, run a short local test to exercise HttpClient and logging.
 if (Environment.GetEnvironmentVariable("WEATHER_LOCAL_TEST") == "1")
 {
     // Build a service provider from the collection to resolve HttpClient and logging
-    using var sp = builder.Services.BuildServiceProvider();
-    var client = sp.GetRequiredService<HttpClient>();
-    var loggerFactory = sp.GetRequiredService<Microsoft.Extensions.Logging.ILoggerFactory>();
+    using var sp = app.Services.CreateScope();
+    var client = sp.ServiceProvider.GetRequiredService<HttpClient>();
+    var loggerFactory = sp.ServiceProvider.GetRequiredService<ILoggerFactory>();
     var logger = loggerFactory.CreateLogger("LocalTest");
 
     try

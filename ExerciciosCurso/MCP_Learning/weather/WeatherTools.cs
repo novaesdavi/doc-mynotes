@@ -1,6 +1,7 @@
 using ModelContextProtocol.Server;
 using System;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
@@ -13,7 +14,15 @@ namespace QuickstartWeatherServer.Tools;
 [McpServerToolType]
 public static class WeatherTools
 {
-    [McpServerTool, Description("Get weather alerts for a US state.")]
+    private static ILogger? _logger;
+
+    /// <summary>
+    /// Initialize the logger for WeatherTools. Call this from Program.cs after building the service provider.
+    /// </summary>
+    public static void InitializeLog(ILogger? logger)
+    {
+        _logger = logger;
+    }
     public static async Task<string> GetAlerts(
         HttpClient client,
         [Description("The US state to get alerts for.")] string state,
@@ -54,7 +63,15 @@ public static class WeatherTools
         }
     }
 
-    [McpServerTool, Description("Get weather forecast for a location.")]
+    // Public wrapper exposed as the MCP tool (no ILogger parameter)
+    [McpServerTool, Description("Get weather alerts for a US state.")]
+    public static Task<string> GetAlerts(
+        HttpClient client,
+        [Description("The US state to get alerts for.")] string state)
+    {
+        return GetAlerts(client, state, _logger);
+    }
+
     public static async Task<string> GetForecast(
         HttpClient client,
         [Description("Latitude of the location.")] double latitude,
@@ -88,6 +105,16 @@ public static class WeatherTools
             logger?.LogError(ex, "GetForecast failed for {Lat},{Lon}", latitude, longitude);
             throw;
         }
+    }
+
+    // Public wrapper exposed as the MCP tool (no ILogger parameter)
+    [McpServerTool, Description("Get weather forecast for a location.")]
+    public static Task<string> GetForecast(
+        HttpClient client,
+        [Description("Latitude of the location.")] double latitude,
+        [Description("Longitude of the location.")] double longitude)
+    {
+        return GetForecast(client, latitude, longitude, _logger);
     }
 }
 

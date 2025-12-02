@@ -1,0 +1,8 @@
+{
+  "command": "dotnet",
+  "args": ["build/index.js", "--debug"],
+  "env": {
+    "API_KEY": "your-api-key",
+    "DEBUG": "true"
+  }
+}
